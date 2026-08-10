@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,10 +7,12 @@ using UnityEngine.EventSystems;
 public class Placing : MonoBehaviour, IPointerDownHandler
 {
     InputSystem_Actions inputActions;
-[SerializeField] GameObject[] breakableBlocks;
+[SerializeField] List<GameObject> breakableBlocks;
+ InventoryManager inventoryManager;
     void Awake()
     {
         inputActions = new InputSystem_Actions();
+        inventoryManager = FindAnyObjectByType<InventoryManager>();
     }
     //Enables New Input System
     void OnEnable()
@@ -27,10 +30,26 @@ public class Placing : MonoBehaviour, IPointerDownHandler
         foreach (GameObject block in breakableBlocks)
         {
             if (!block.gameObject.activeSelf){
-            Debug.Log(block.name);}
+            Debug.Log(block.name);
+
+            Vector2 screenPos = inputActions.UI.Point.ReadValue<Vector2>();
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
+            block.SetActive(true);
+            block.transform.position = worldPos;
+            
+            block.GetComponent<Breaking>().enabled = false;
+            inventoryManager.AddItemCounter(-1);
+            
+            Color itemColor = block.GetComponent<SpriteRenderer>().color;
+            itemColor.a = 1;
+            block.GetComponent<SpriteRenderer>().color = itemColor;
+
+
+            return;
+            }
         }
 
-        Debug.Log(breakableBlocks);
+       
             // if (eventData.button == PointerEventData.InputButton.Left)
             // // {
             // // Debug.Log("LEFT CLICKKKKKKKKKK");
@@ -39,21 +58,7 @@ public class Placing : MonoBehaviour, IPointerDownHandler
             Debug.Log("*");
 
        
-    //    if (!newBlock.activeSelf)
-    //     {
-    //         Debug.Log(newBlock);
-    //         Vector2 screenPos = inputActions.UI.Point.ReadValue<Vector2>();
-    //         Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
-    //         newBlock.SetActive(true);
-    //         newBlock.transform.position = worldPos;
-    //         Debug.Log(worldPos);
-
-    //         Color itemColor = newBlock.GetComponent<SpriteRenderer>().color;
-    //         itemColor.a = 1;
-    //         newBlock.GetComponent<SpriteRenderer>().color = itemColor;
-    //     }
-    //     else
-    //      newBlock = GameObject.FindWithTag("Breakable");
+      
     }
     
 }

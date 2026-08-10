@@ -9,7 +9,10 @@ public class Breaking : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager = FindAnyObjectByType<InventoryManager>();
     }
-
+    public void SetHealthOfBlock(int val)
+    {
+        _health = val;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         _health--;
