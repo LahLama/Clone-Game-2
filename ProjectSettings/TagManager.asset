@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Breakable
+  - Spike
+  - DeathZone
   layers:
   - Default
   - TransparentFX
