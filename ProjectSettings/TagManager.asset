@@ -7,6 +7,7 @@ TagManager:
   - Breakable
   - Spike
   - DeathZone
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -14,10 +15,10 @@ TagManager:
   - breakable
   - Water
   - UI
+  - 
+  - Player
+  - 
   - Ground
-  - 
-  - 
-  - 
   - 
   - 
   - 

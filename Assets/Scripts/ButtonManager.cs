@@ -10,6 +10,12 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.name, LoadSceneMode.Single);
     }
 
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level02", LoadSceneMode.Single);
+    }
+
     public void QuitGame()
     {
         Time.timeScale = 1f;
