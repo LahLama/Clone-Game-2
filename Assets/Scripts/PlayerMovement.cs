@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(moveInput) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
-        Debug.Log($"moveInput: {moveInput}, timeScale: {Time.timeScale}, enabled: {enabled}, A pressed: {keyboard.aKey.isPressed}, D pressed: {keyboard.dKey.isPressed}");
+        // Debug.Log($"moveInput: {moveInput}, timeScale: {Time.timeScale}, enabled: {enabled}, A pressed: {keyboard.aKey.isPressed}, D pressed: {keyboard.dKey.isPressed}");
     }
 
     private void FixedUpdate()

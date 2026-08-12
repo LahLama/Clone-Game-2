@@ -30,7 +30,7 @@ public class Placing : MonoBehaviour, IPointerDownHandler
         foreach (GameObject block in breakableBlocks)
         {
             if (!block.gameObject.activeSelf){
-            Debug.Log(block.name);
+            // Debug.Log(block.name);
 
             Vector2 screenPos = inputActions.UI.Point.ReadValue<Vector2>();
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 10f));
