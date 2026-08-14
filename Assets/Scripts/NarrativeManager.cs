@@ -7,7 +7,8 @@ public class NarrativeManager : MonoBehaviour
     {
         this.GetComponent<MeshRenderer>().enabled = false;
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         this.GetComponent<MeshRenderer>().enabled = true;
     }
