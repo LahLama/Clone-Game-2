@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level 01", LoadSceneMode.Single);
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1f;
