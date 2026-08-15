@@ -13,7 +13,7 @@ public class ButtonManager : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level02", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level 02", LoadSceneMode.Single);
     }
 
     public void QuitGame()
