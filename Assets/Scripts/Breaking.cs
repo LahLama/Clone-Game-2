@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 public class Breaking : MonoBehaviour, IPointerClickHandler
 {
     int _health = 3;
@@ -17,15 +16,13 @@ public class Breaking : MonoBehaviour, IPointerClickHandler
     {
         _health--;
         Color itemColor = this.GetComponent<SpriteRenderer>().color;
-        itemColor.a = ((_health)/3f);
+        itemColor.a = ((_health) / 3f);
         this.GetComponent<SpriteRenderer>().color = itemColor;
-
-        if ( _health <= 0 ){
-        // Debug.Log("ADD TO INVENTORY");
-        this.gameObject.SetActive(false);
-        inventoryManager.AddItemCounter(+1);
+        if (_health <= 0)
+        {
+            this.gameObject.SetActive(false);
+            inventoryManager.AddItemCounter(+1);
+            SoundManager.Instance.PlayBreakBrick();
+        }
     }
-            // Debug.Log("Health of " + this.name + " " + _health);
-    }
-
 }
